@@ -10,41 +10,44 @@ import SwiftUI
 
 struct ContentView : View {
     var body: some View {
-        VStack {
-			ZStack {
-				Image("background").resizable()
-					.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: Alignment.topLeading)
-					.scaledToFill()
-				Image("arrows").resizable()
-					.frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 200, alignment: Alignment.topLeading)
-				Image("mtb sample")
-					.cornerRadius(20)
-			}
-			
+		NavigationView {
 			VStack {
-				//name and location
+				ZStack {
+					Image("background").resizable()
+						.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: Alignment.topLeading)
+						.scaledToFill()
+					Image("arrows").resizable()
+						.frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 200, alignment: Alignment.topLeading)
+					Image("mtb sample")
+						.cornerRadius(20)
+				}
+
 				VStack {
-					Text("Jacob Pashman")
-						.bold()
-					Text(" Mill Valley, CA")
+					//name and location
+					VStack {
+						Text("Jacob Pashman")
+							.bold()
+						Text(" Mill Valley, CA")
+					}
+					.padding()
+					//stats
+					VStack {
+						Text("Rides 3-5 days a week")
+						Text("Rides 50-70 miles a week")
+						Text("Has been riding for 3-4 years")
+					}
+					.padding()
+					//buttons
+					HStack {
+						extractedButtons(name: "chatButton")
+						extractedButtons(name: "stravaButton")
+					}
+					.padding(.bottom)
 				}
-				.padding()
-				//stats
-				VStack {
-					Text("Rides 3-5 days a week")
-					Text("Rides 50-70 miles a week")
-					Text("Has been riding for 3-4 years")
-				}
-				.padding()
-				//buttons
-				HStack {
-					extractedButtons(name: "chatButton")
-					extractedButtons(name: "stravaButton")
-				}
-				.padding(.bottom)
 			}
-        }
-    }
+			.navigationBarTitle(Text("Landmarks"))
+    	}
+	}
 }
 
 #if DEBUG
@@ -52,18 +55,8 @@ struct ContentView_Previews : PreviewProvider {
 	static var previews: some View {
 		Group {
 			ContentView()
-				.previewDevice(PreviewDevice(rawValue: "iPhone SE"))
-				.previewDisplayName("iPhone SE")
-			
-			ContentView()
 				.previewDevice(PreviewDevice(rawValue: "iPhone XS Max"))
 				.previewDisplayName("iPhone XS Max")
-			ContentView()
-				.previewDevice(PreviewDevice(rawValue: "iPhone XS"))
-				.previewDisplayName("iPhone XS")
-			ContentView()
-				.previewDevice(PreviewDevice(rawValue: "iPhone 8"))
-				.previewDisplayName("iPhone 8")
 		}
 	}
 }
