@@ -11,6 +11,7 @@ import SwiftUI
 struct SettingsView : View {
 	@State var firstName: String = ""
 	@State var gender = 0
+	@State var distance: String = ""
     var body: some View {
 		VStack {
 			HStack {
