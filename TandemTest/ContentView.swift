@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ContentView : View {
+	let chatImage = Image("chats").resizable()
+		.frame(width: 50, height: 33)
     var body: some View {
 		NavigationView {
 			VStack {
@@ -20,6 +22,7 @@ struct ContentView : View {
 						.frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 200, alignment: Alignment.topLeading)
 					Image("mtb sample")
 						.cornerRadius(20)
+					
 				}
 
 				VStack {
@@ -36,21 +39,26 @@ struct ContentView : View {
 						Text("Rides 50-70 miles a week")
 						Text("Has been riding for 3-4 years")
 					}
-					.padding()
+					
 					//buttons
 					HStack {
 						extractedButtons(name: "chatButton")
 						extractedButtons(name: "stravaButton")
 					}
-					.padding(.bottom)
+					.padding(.bottom, 100.0)
 				}
+				
 			}
-			.navigationBarTitle(Text("Landmarks"))
+			.navigationBarTitle(Text("Tandem"), displayMode: .inline)
+//			NavigationButton(destination: SettingsView(), label: { Text("Settings")})
+//			.padding(.bottom, 100)
 			.navigationBarItems(
-				trailing: Button(action: {
-					
-				}, label: { Text("Chat") })
-			)
+				leading: NavigationButton(destination: SettingsView()) {
+					Text("Settings")
+				},
+				trailing: Button(action: {}, label: { chatImage }))
+			
+			
     	}
 	}
 }
@@ -62,6 +70,9 @@ struct ContentView_Previews : PreviewProvider {
 			ContentView()
 				.previewDevice(PreviewDevice(rawValue: "iPhone XS Max"))
 				.previewDisplayName("iPhone XS Max")
+			ContentView()
+				.previewDevice(PreviewDevice(rawValue: "iPhone SE"))
+				.previewDisplayName("iPhone SE")
 		}
 	}
 }
