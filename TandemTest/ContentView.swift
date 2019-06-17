@@ -46,6 +46,11 @@ struct ContentView : View {
 				}
 			}
 			.navigationBarTitle(Text("Landmarks"))
+			.navigationBarItems(
+				trailing: Button(action: {
+					
+				}, label: { Text("Chat") })
+			)
     	}
 	}
 }
